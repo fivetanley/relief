@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <script src="vendor/chai.js"></script>
+  <script src="vendor/sinon.js"></script>
+  <script src="vendor/sinon-chai.js"></script>
+  <script src="vendor/jquery.js"></script>
+  <script src="vendor/mocha/mocha.js"></script>
+  <script src="/lib/vendor/require.js"></script>
+  <link rel="stylesheet" type="text/css" href="vendor/mocha/mocha.css"/>
+  <script>var expect = chai.expect</script>
+  <script>mocha.setup( { ui: 'bdd', ignoreLeaks: true } )</script>
+  <script>
+    $(function(){
+      require.config( { baseUrl: '/lib' } )
+      require( [ '/test/deputy.spec.js' ], function() {
+        mocha
+        .run()
+      })
+    })
+  </script>
+</head>
+<body>
+  <div id="mocha"></div>
+</body>
+</html>
