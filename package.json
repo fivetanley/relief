@@ -1,0 +1,14 @@
+{
+  "name": "relief",
+  "version": "0.0.0",
+  "description": "dependency injection for node and the browser (AMD)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "author": "Stanley Stuart <fivetanley>",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT"
+}
