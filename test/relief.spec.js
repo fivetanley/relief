@@ -1,12 +1,12 @@
 define( function( require ) {
 
-  describe( 'deputy', function(){
+  describe( 'relief', function(){
 
     var deputy, requireJS, that, jqueryStub
 
     beforeEach( function() {
 
-      deputy = require( 'deputy' )
+      deputy = require( 'relief' )
       oldJqueryStub = { works: 'false' }
       jqueryStub = { works: true }
       requireJS = {}
