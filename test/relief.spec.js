@@ -7,7 +7,7 @@ define( function( require ) {
     var Relief, requireJS, relief, jqueryStub, oldJqueryStub
 
     beforeEach( function() {
-      Relief = require( 'relief' )
+      Relief = require( 'relief' ).Relief
       oldJqueryStub = { works: 'false' }
       jqueryStub = { works: true }
       requireJS = window.require
