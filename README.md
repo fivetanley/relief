@@ -60,7 +60,7 @@ loader.load( ['dep1'], function( dep1, relief ) {
 })
 ```
 
-The `load` functions always passes back the same instance of `relief`. The `relief` object will give you access to the `stubs`, and any actuals Relief was able to find. You can use the `stubs` object to set up and tear down your mocks and spies.
+The `load` functions always passes back the same instance of `relief` **as the last argument**. The `relief` object will give you access to the `stubs`, and any actuals Relief was able to find. You can use the `stubs` object to set up and tear down your mocks and spies.
 
 Here's an example using Mocha as the test framework, Chai as the assertion framework, and Sinon/chai-sinon for stubbing:
 
