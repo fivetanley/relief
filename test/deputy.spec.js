@@ -40,6 +40,9 @@ define( function( require ) {
         var deputizing = function(){ deputy( requireJS ) }
         expect( deputizing ).not.to.throw()
       })
+      it( 'creates a random context name', function() {
+        expect( deputy() ).to.have.ownProperty( 'contextName' )
+      })
     })
 
     describe( 'dependency injection', function() {
