@@ -1,8 +1,10 @@
 define( function( require ) {
 
+  'use strict';
+
   describe( 'Relief', function(){
 
-    var Relief, requireJS, relief, jqueryStub
+    var Relief, requireJS, relief, jqueryStub, oldJqueryStub
 
     beforeEach( function() {
 
