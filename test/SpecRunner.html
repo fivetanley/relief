@@ -15,9 +15,13 @@
   <script>
     $(function(){
       require.config( { baseUrl: '/lib' } )
-      require( [ '/test/relief.spec.js' ], function() {
-        mocha
-        .run()
+      require(
+        [
+          '/test/relief.spec.js'
+        , '/test/wrapper.spec.js'
+       ], function() {
+          mocha
+            .run()
       })
     })
   </script>

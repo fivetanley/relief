@@ -34,6 +34,17 @@ define( function( require ) {
         expect( new Relief( requireJS ) ).to.have.ownProperty( 'contextName' )
       })
 
+      it( 'sets the new context config to passed context\'s', function() {
+        var config = relief.loader.s.contexts[ relief.contextName ].config
+          , rootConfig = relief.loader.s.contexts._.config
+          , rootProp
+
+        for ( rootProp in rootConfig ) {
+          if ( ! rootConfig.hasOwnProperty( rootProp ) ) continue
+          expect( config[ rootProp ] ).to.equal( rootConfig[ rootProp ] )
+        }
+      })
+
     })
 
     describe( 'dependency injection', function() {
@@ -147,7 +158,7 @@ define( function( require ) {
 
       beforeEach( function() {
         req = relief.loader.s.contexts[ relief.contextName ].require =
-          sinon.stub().yields( 'foo', 'bar', 'baz' )
+          sinon.stub().yields( req, 'foo', 'bar', 'baz' )
         relief.stub( 'oldjquery', oldJqueryStub )
         relief.stub( 'jquery', jqueryStub )
         relief.load( deps, callback )
@@ -158,7 +169,6 @@ define( function( require ) {
           , stub
           , definedContext =
               relief.loader.s.contexts[ relief.contextName ].defined
-        console.log( definedContext )
         for ( stub in stubs ) {
           if ( ! stubs.hasOwnProperty( stub ) ) continue
           expect( definedContext ).to.have.ownProperty( stub )
@@ -166,13 +176,19 @@ define( function( require ) {
       })
 
       describe( 'calling the require function of context', function() {
-        it( 'calls the fn with the dependency list', function() {
+        it( 'calls the fn with the require + dependency list', function() {
+          deps.unshift( 'require' )
           expect( req ).to.have.been.calledWith( deps )
         })
 
         it( 'calls the callback with the deps + relief obj', function() {
           expect( callback ).to.have.been
             .calledWith( 'foo', 'bar', 'baz', relief )
+        })
+
+        it( 'removes the first require', function() {
+          expect( callback ).not.to.have.been
+            .calledWith( req )
         })
       })
 
