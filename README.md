@@ -66,7 +66,7 @@ Here's an example using Mocha as the test framework, Chai as the assertion frame
 
 ```
 loader.stub( 'jquery', sinon.stub() )
-loader( [ 'somethingThatDepsOnJquery' ], function( thingBeingTested, _relief) )
+loader( [ 'somethingThatDepsOnJquery' ], function( thingBeingTested, _relief) {
   beforeEach( function() {
     _relief.stubs.jquery.reset()
   })
